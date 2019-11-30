@@ -1,0 +1,1 @@
+[![CircleCI](https://circleci.com/gh/enowicka/question-board.svg?style=svg)](https://circleci.com/gh/enowicka/question-board)
