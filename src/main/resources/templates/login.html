@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head.html :: head(title='welcome.title')"></head>
+<body>
+<div class="container-fluid d-flex h-100 p-3 mx-auto flex-column">
+    <main role="main" class="inner cover">
+        <h3 th:text="#{navigation.login}"></h3>
+        <form name='f' action="login" method='POST'>
+            <table>
+                <tr>
+                    <td th:text="#{login.user}">:</td>
+                    <td><input type='text' name='username' value=''></td>
+                </tr>
+                <tr>
+                    <td th:text="#{login.pass}">:</td>
+                    <td><input type='password' name='password' /></td>
+                </tr>
+                <tr>
+                    <td><input name="submit" type="submit" value="Zaloguj" /></td>
+                </tr>
+            </table>
+        </form>
+        <a th:href="@{/index}" th:text="#{index.back}"></a>
+    </main>
+</div>
+<footer th:replace="fragments/footer.html :: footer"></footer>
+</body>
+</html>
