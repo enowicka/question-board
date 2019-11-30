@@ -19,7 +19,7 @@ jobs:
             sleep 1
           done
           echo Failed waiting for MySQL && exit 1
-#      - run: mysql -h 0.0.0.0 -u root -e 'source src/main/resources/db/create_database.sql'
+      - run: mysql -h 0.0.0.0 -u root -e 'source src/main/resources/db/create_database.sql'
       - restore_cache:
           key: java-workshop-{{ checksum "pom.xml" }}
       - run: mvn dependency:go-offline
