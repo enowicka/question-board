@@ -34,6 +34,16 @@ public class Answer {
     @CreationTimestamp
     private LocalDateTime createdOn;
 
+    private long rating;
+
+    public long getRating() {
+        return rating;
+    }
+
+    public void setRating(long rating) {
+        this.rating = rating;
+    }
+
     @OrderBy("createdOn")
     @OneToMany(mappedBy = "answer")
     private List<Comment> comments = new ArrayList<>();
@@ -98,6 +108,7 @@ public class Answer {
         if (o == null || getClass() != o.getClass()) return false;
         Answer answer = (Answer) o;
         return id == answer.id &&
+                rating == answer.rating &&
                 Objects.equals(user, answer.user) &&
                 Objects.equals(content, answer.content) &&
                 Objects.equals(question, answer.question) &&
@@ -107,7 +118,7 @@ public class Answer {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, user, content, question, createdOn, comments);
+        return Objects.hash(id, user, content, question, createdOn, rating, comments);
     }
 
     @Override
@@ -118,6 +129,7 @@ public class Answer {
                 ", content='" + content + '\'' +
                 ", question=" + question +
                 ", createdOn=" + createdOn +
+                ", rating=" + rating +
                 ", comments=" + comments +
                 '}';
     }
