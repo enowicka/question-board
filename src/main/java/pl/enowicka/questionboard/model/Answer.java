@@ -88,9 +88,9 @@ public class Answer {
         this.createdOn = createdOn;
     }
 
-//    public void setComments(List<Comment> comments) {
-//        this.comments = comments;
-//    }
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -101,13 +101,13 @@ public class Answer {
                 Objects.equals(user, answer.user) &&
                 Objects.equals(content, answer.content) &&
                 Objects.equals(question, answer.question) &&
-                Objects.equals(createdOn, answer.createdOn) /*&&
-                Objects.equals(comments, answer.comments)*/;
+                Objects.equals(createdOn, answer.createdOn) &&
+                Objects.equals(comments, answer.comments);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, user, content, question, createdOn/*, comments*/);
+        return Objects.hash(id, user, content, question, createdOn, comments);
     }
 
     @Override
@@ -118,7 +118,7 @@ public class Answer {
                 ", content='" + content + '\'' +
                 ", question=" + question +
                 ", createdOn=" + createdOn +
-//                ", comments=" + comments +
+                ", comments=" + comments +
                 '}';
     }
 }
