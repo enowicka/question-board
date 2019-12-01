@@ -4,23 +4,26 @@
 <body>
 <div class="container-fluid d-flex h-100 p-3 mx-auto flex-column">
     <main role="main" class="inner cover">
-        <h3 th:text="#{navigation.login}"></h3>
-        <form name='f' action="login" method='POST'>
+        <h3 th:text="#{login.login}"></h3>
+        <form name='form' action="login" method='POST'>
             <table>
                 <tr>
                     <td th:text="#{login.user}">:</td>
-                    <td><input type='text' name='username' value=''></td>
+                    <td><input type='text' name='username' class="form-control"></td>
                 </tr>
                 <tr>
                     <td th:text="#{login.pass}">:</td>
-                    <td><input type='password' name='password' /></td>
+                    <td><input type='password' name='password' class="form-control"/></td>
                 </tr>
                 <tr>
-                    <td><input name="submit" type="submit" value="Zaloguj" /></td>
+                    <td>
+                        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+                        <button class="btn btn-lg btn-primary btn-block" th:text="#{login.login}" type="submit"></button>
+                    </td>
                 </tr>
             </table>
+            <a th:href="@{/}" th:text="#{index.back}"></a>
         </form>
-        <a th:href="@{/index}" th:text="#{index.back}"></a>
     </main>
 </div>
 <footer th:replace="fragments/footer.html :: footer"></footer>
