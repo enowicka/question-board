@@ -34,18 +34,18 @@ public class Answer {
     @CreationTimestamp
     private LocalDateTime createdOn;
 
-//    @OrderBy("createdOn")
-//    @OneToMany(mappedBy = "question")
-//    private List<Comment> comments = new ArrayList<>();
+    @OrderBy("createdOn")
+    @OneToMany(mappedBy = "answer")
+    private List<Comment> comments = new ArrayList<>();
 
-//    public List<Comment> getComments() {
-//        return comments;
-//    }
+    public List<Comment> getComments() {
+        return comments;
+    }
 
-//    public void addComment(Comment comment) {
-//        this.comments.add(comment);
-//        comment.setAnswer(this);
-//    }
+    public void addComment(Comment comment) {
+        this.comments.add(comment);
+        comment.setAnswer(this);
+    }
 
     public Question getQuestion() {
         return question;
