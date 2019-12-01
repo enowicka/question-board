@@ -18,6 +18,7 @@
                 <tr>
                     <td>
                         <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+                        <div th:text="#{login.wrongCredentials}" th:if="${error}" class="alert alert-danger" role="alert"></div>
                         <button class="btn btn-lg btn-primary btn-block" th:text="#{login.login}" type="submit"></button>
                     </td>
                 </tr>
