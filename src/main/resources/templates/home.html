@@ -7,6 +7,7 @@
     <main role="main" class="inner cover">
         <main role="main" class="inner cover">
             <h3 th:text="#{home.invitation}"></h3>
+            <h3 th:text="${currentUser.getName()}"></h3>
             <a th:href="@{/logout}" th:text="#{navigation.logout}"></a>
         </main>
     </main>

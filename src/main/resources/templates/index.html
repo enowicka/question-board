@@ -4,8 +4,9 @@
 <body>
 <div class="container-fluid d-flex h-100 p-3 mx-auto flex-column">
     <main role="main" class="inner cover">
-        <h3 th:text="#{welcome.invitation}"></h3>
-        <a th:href="@{/login}" th:text="#{navigation.login}"></a>
+        <h3 th:text="#{index.invitation}"></h3>
+        <div><a th:href="@{/login}" th:text="#{navigation.login}"></a></div>
+        <div><a th:href="@{/registration}" th:text="#{navigation.register}"></a></div>
     </main>
 </div>
 <footer th:replace="fragments/footer.html :: footer"></footer>

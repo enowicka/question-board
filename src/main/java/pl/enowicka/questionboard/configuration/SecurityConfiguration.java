@@ -12,18 +12,27 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import pl.enowicka.questionboard.model.Role;
 
+import javax.sql.DataSource;
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
+
+    private DataSource dataSource;
+
+    public SecurityConfiguration(DataSource dataSource) {
+        this.dataSource = dataSource;
+    }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth)
             throws Exception {
         auth.
-                inMemoryAuthentication()
-                .withUser("user@mail.com")
-                .password(passwordEncoder().encode("pass"))
-                .roles(Role.USER.name());
+                jdbcAuthentication()
+                .usersByUsernameQuery("select email, password, active from user where email=?")
+                .authoritiesByUsernameQuery("select email, role from user where email=?")
+                .dataSource(dataSource)
+                .passwordEncoder(passwordEncoder());
     }
 
     @Override
@@ -37,7 +46,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(final HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/", "/login").permitAll()
+                .antMatchers("/", "/login", "/registration").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
